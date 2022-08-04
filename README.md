@@ -9,7 +9,7 @@ Currently, Sphynx supports these features:
 
 ## Installation ##
 
-Nuget Gallery: `https://www.nuget.org/packages/RhoMicro.Sphynx`
+Nuget Gallery: https://www.nuget.org/packages/RhoMicro.Sphynx
 
 Package Manager: `Install-Package RhoMicro.Sphynx -Version 1.0.1`
 
