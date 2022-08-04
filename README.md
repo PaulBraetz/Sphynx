@@ -7,6 +7,14 @@ Sphynx aims to combat nonhuman use of ASP.Net Core applications by injecting mid
 Currently, Sphynx supports these features:
 * rate-based request rejection
 
+## Installation ##
+
+Nuget Gallery: `https://www.nuget.org/packages/RhoMicro.Sphynx`
+
+Package Manager: `Install-Package RhoMicro.Sphynx -Version 1.0.1`
+
+.Net CLI: `dotnet add package RhoMicro.Sphynx --version 1.0.1`
+
 ## How To Use ##
 
 ### Default Sphynx ###
