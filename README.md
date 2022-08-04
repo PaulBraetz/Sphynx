@@ -15,6 +15,10 @@ Package Manager: `Install-Package RhoMicro.Sphynx -Version 1.0.1`
 
 .Net CLI: `dotnet add package RhoMicro.Sphynx --version 1.0.1`
 
+## Versioning ##
+
+Sphynx uses [Named Link](https://semver.org/ "Semantic Versioning 2.0").
+
 ## How To Use ##
 
 Rate based request rejection allocates a capacity of requests to individual ip addresses. This capacity is decremented everytime a request is received from the address and incremented for each passing of the `RecoveryRate`, not exceeding the `InitialCapacity`. Whenever a given capacity is depleted, requests from the corresponding address will be rejected until `RecoveryTime` has passed at least once.
