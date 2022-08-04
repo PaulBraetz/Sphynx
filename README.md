@@ -8,7 +8,14 @@ Currently, Sphynx supports these features:
 
 ## How To Use ##
 
-Inject Sphynx using extensions on `IServiceCollection` ans `IApplicationBuilder`
+Inject Sphynx using extensions on `IServiceCollection` an `IApplicationBuilder`
 ```cs
+using Sphynx;
 
+services.ConfigureSphynx(optionsBuilder => {
+	optionsBuilder.Capacity = 25;
+	optionsBuilder.RecoveryRate = TimeSpan.FromMillis(1000);
+});
+
+app.UseDefaultSphynx();
 ```
