@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net6.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>enable</Nullable>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <Authors>Paul Brätz</Authors>
+	  <Description>Middleware for ASP.Net Core that aims to reject spam requests.</Description>
+	  <Copyright>2022</Copyright>
+	  <PackageTags>RhoMicro</PackageTags>
+	  <Version>1.0.0</Version>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageId>RhoMicro.Sphynx</PackageId>
+	  <AssemblyName>Sphynx</AssemblyName>
+	  <RootNamespace>Sphynx</RootNamespace>
+	  <Company>RhoMicro</Company>
+	  <PackageProjectUrl>https://github.com/PaulBraetz/Sphynx/</PackageProjectUrl>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+    <PackageReference Include="RhoMicro.Fort" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>
