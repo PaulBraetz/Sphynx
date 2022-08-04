@@ -62,8 +62,10 @@ namespace Sphynx.Middleware
         {
             context.ThrowIfDefault(nameof(context));
 
-            var ip = context.Connection.RemoteIpAddress?.ToString();
-            if (ip != null && await _trackers.GetOrAdd(ip, new RequestTracker(Options)).Check(Options))
+            var ip = context.Connection.RemoteIpAddress.GetAddressBytes();
+            var ipHash = System.Security.Cryptography.SHA256.HashData(ip);
+            var ipHashString = Convert.ToBase64String(ipHash);
+            if (ip != null && await _trackers.GetOrAdd(ipHashString, new RequestTracker(Options)).Check(Options))
             {
                 await _next(context);
             }
