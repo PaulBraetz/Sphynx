@@ -17,6 +17,8 @@ Package Manager: `Install-Package RhoMicro.Sphynx -Version 1.0.1`
 
 ## How To Use ##
 
+Rate based request rejection allocates an amount of requests to individual ip addresses. This amount is decremented everytime a request is received from the address and incremented according to the `RecoveryRate`. Whenever a given allocated amount is depleted, requests from the corresponding address will be rejected. 
+
 ### Default Sphynx ###
 
 Inject Sphynx using extensions on `IServiceCollection` and `IApplicationBuilder`
