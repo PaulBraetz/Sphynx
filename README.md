@@ -37,27 +37,7 @@ Delay Before Request | Capacity | Rejected
 
 ### Default Sphynx ###
 
-Inject Sphynx using extensions on `IServiceCollection` and `IApplicationBuilder`
-```cs
-using Sphynx;
-
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.ConfigureSphynx(optionsBuilder => {
-	optionsBuilder.InitialCapacity = 25;
-	optionsBuilder.RecoveryRate = TimeSpan.FromMillis(1000);
-});
-
-//more code
-
-var app = builder.Build();
-
-app.UseDefaultSphynx();
-```
-
-### Logging Sphynx ###
-
-Sphynx provides an implementation capable of logging request rejections:
+Inject Sphynx using extensions on `IServiceCollection` and `IApplicationBuilder`. Note that `DefaultSphynx` requires a `ILogger<DefaultSphynx>` to be registered for injection.
 ```cs
 using Sphynx;
 
@@ -75,5 +55,5 @@ builder.Logging.AddConsole();
 
 var app = builder.Build();
 
-app.UseLoggingSphynx();
+app.UseDefaultSphynx();
 ```
