@@ -45,7 +45,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigureSphynx(optionsBuilder => {
 	optionsBuilder.InitialCapacity = 25;
-	optionsBuilder.RecoveryRate = TimeSpan.FromMillis(1000);
+	optionsBuilder.RecoveryRate = TimeSpan.FromMilliseconds(1000);
 });
 
 builder.Logging.ClearProviders();
