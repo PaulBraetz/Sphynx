@@ -13,22 +13,16 @@ namespace Sphynx
 
             return app.UseMiddleware<DefaultSphynx>();
         }
-        public static IApplicationBuilder UseLoggingSphynx(this IApplicationBuilder app)
-        {
-            app.ThrowIfDefault(nameof(app));
-
-            return app.UseMiddleware<LoggingSphynx>();
-        }
-        public static IServiceCollection ConfigureSphynx(this IServiceCollection services, Action<OptionsBuilder> configureBuilder)
+        public static IServiceCollection ConfigureDefaultSphynx(this IServiceCollection services, Action<DefaultSphynxOptionsBuilder> configureBuilder)
         {
             services.ThrowIfDefault(nameof(services));
             configureBuilder.ThrowIfDefault(nameof(configureBuilder));
 
-            var builder = new OptionsBuilder();
+            var builder = new DefaultSphynxOptionsBuilder();
             configureBuilder.Invoke(builder);
-            return services.AddSingleton<IOptionsBuilder>(builder);
+            return services.AddSingleton<ISphynxOptionsBuilder<DefaultSphynxOptions>>(builder);
         }
-        public static IServiceCollection ConfigureSphynx(this IServiceCollection services, Func<IOptionsBuilder> builderFactory)
+        public static IServiceCollection ConfigureSphynx<TOptions>(this IServiceCollection services, Func<ISphynxOptionsBuilder<TOptions>> builderFactory)
         {
             services.ThrowIfDefault(nameof(services));
             builderFactory.ThrowIfDefault(nameof(builderFactory));
