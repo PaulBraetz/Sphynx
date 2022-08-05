@@ -15,20 +15,24 @@ Package Manager: `Install-Package RhoMicro.Sphynx -Version 1.0.1`
 
 .Net CLI: `dotnet add package RhoMicro.Sphynx --version 1.0.1`
 
+## Versioning ##
+
+Sphynx uses [Semantic Versioning 2.0](https://semver.org/).
+
 ## How To Use ##
 
-Rate based request rejection allocates an amount of requests to individual ip addresses. This amount is decremented everytime a request is received from the address and incremented according to the `RecoveryRate`. Whenever a given allocated amount is depleted, requests from the corresponding address will be rejected until `RecoveryTime` has passed at least once.
+Rate based request rejection allocates a capacity of requests to individual ip addresses. This capacity is decremented everytime a request is received from the address and incremented for each passing of the `RecoveryRate`, not exceeding the `InitialCapacity`. Whenever a given capacity is depleted, requests from the corresponding address will be rejected until `RecoveryTime` has passed at least once.
 
-For example, given a `Capacity` of `2` and a `RecoveryRate` of `1000`ms, the amount available would recover by 1 every second, and Sphynx would reject requests like so:
+For example, given an `InitialCapacity` of 2 and a `RecoveryRate` of 1000ms, the capacity would never exceed 2 and recover by 1 every second. Sphynx would reject requests like so:
 
-Delay Before Request | Amount | Rejected
--------------------- | ------ | --------
-0ms		     | 2      | No
-0ms		     | 1      | No
-0ms		     | 0      | Yes
-1000ms		     | 1      | No
-500ms		     | 0      | Yes
-500ms                | 1      | No
+Delay Before Request | Capacity | Rejected
+-------------------- | -------- | --------
+0ms		     | 2        | No
+0ms		     | 1        | No
+0ms		     | 0        | Yes
+1000ms		     | 1        | No
+500ms		     | 0        | Yes
+500ms                | 1        | No
 
 
 ### Default Sphynx ###
@@ -40,7 +44,7 @@ using Sphynx;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigureSphynx(optionsBuilder => {
-	optionsBuilder.Capacity = 25;
+	optionsBuilder.InitialCapacity = 25;
 	optionsBuilder.RecoveryRate = TimeSpan.FromMillis(1000);
 });
 
@@ -60,7 +64,7 @@ using Sphynx;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigureSphynx(optionsBuilder => {
-	optionsBuilder.Capacity = 25;
+	optionsBuilder.InitialCapacity = 25;
 	optionsBuilder.RecoveryRate = TimeSpan.FromMillis(1000);
 });
 
