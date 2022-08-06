@@ -11,9 +11,9 @@ Currently, Sphynx supports these features:
 
 Nuget Gallery: https://www.nuget.org/packages/RhoMicro.Sphynx
 
-Package Manager: `Install-Package RhoMicro.Sphynx -Version 1.0.1`
+Package Manager: `Install-Package RhoMicro.Sphynx -Version 2.0.0`
 
-.Net CLI: `dotnet add package RhoMicro.Sphynx --version 1.0.1`
+.Net CLI: `dotnet add package RhoMicro.Sphynx --version 2.0.0`
 
 ## Versioning ##
 
