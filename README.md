@@ -17,7 +17,7 @@ Package Manager: `Install-Package RhoMicro.Sphynx -Version 2.0.0`
 
 ## Versioning ##
 
-Sphynx uses [Semantic Versioning 2.0](https://semver.org/).
+Sphynx uses [Semantic Versioning 2.0.0](https://semver.org/).
 
 ## How To Use ##
 
